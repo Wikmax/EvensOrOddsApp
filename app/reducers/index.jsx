@@ -1,21 +1,9 @@
-import { SET_GAME_STARTED, SET_DESCRIPTION_EXPANDED } from '../actions/types.jsx';
-
-const DEFAULT_SETTINGS = {
-    gameStarted: false,
-    descriptionExpanded: false
-};
-
-const rootReducer = (state = DEFAULT_SETTINGS, action) => {
-    switch (action.type) {
-        case SET_GAME_STARTED:
-            return { ...state, gameStarted: action.gameStarted };
-        case SET_DESCRIPTION_EXPANDED:
-            return {
-                ...state, descriptionExpanded: action.descriptionExpanded
-            };
-        default:
-            return state;
-    }
-};
-
-export default rootReducer;
+import { combineReducers } from "redux";
+import settingsReducer from "./settings.jsx";
+import deckReducer from "./deck.jsx";
+import gameStateReducer from "./gameState.jsx";
+export default combineReducers({
+   settings: settingsReducer,
+   deck: deckReducer,
+   gameState: gameStateReducer,
+});
